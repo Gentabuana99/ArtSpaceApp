@@ -14,7 +14,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CutCornerShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -48,7 +51,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-
+                    ArtSpaceMain()
                 }
             }
         }
@@ -75,7 +78,7 @@ fun ArtWithTitle(ArtPicture: Int, ArtTitle: String, ArtistName: String, modifier
         )
         Card(
             modifier = Modifier
-                .padding(horizontal = 45.dp, vertical = 100.dp)
+                .padding(horizontal = 45.dp, vertical = 90.dp)
 
         ){
             Column(modifier = Modifier.padding(16.dp)) {
@@ -93,7 +96,6 @@ fun ArtWithTitle(ArtPicture: Int, ArtTitle: String, ArtistName: String, modifier
                 )
             }
         }
-
     }
 }
 
@@ -134,7 +136,38 @@ fun ArtSpaceMain(){
             ArtistName = stringResource(id = R.string.JeanAntoine)
         )
     }
-
+    Row(
+        horizontalArrangement = Arrangement.SpaceEvenly,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 700.dp)
+    ) {
+        Button(
+            onClick = { result-- },
+            //shape = RectangleShape,
+            //shape = CutCornerShape(5.dp),
+            shape = RoundedCornerShape(50.dp),
+            border = BorderStroke(2.dp, Color.Gray),
+            elevation = ButtonDefaults.buttonElevation(
+                defaultElevation = 20.dp,
+                //pressedElevation = 50.dp
+                )
+            ) {
+            Text(text = "Back")
+        }
+        Button(
+            onClick = { result++ },
+            //shape = RectangleShape,
+            //shape = CutCornerShape(5.dp),
+            shape = RoundedCornerShape(50.dp),
+            border = BorderStroke(2.dp, Color.Gray),
+            elevation = ButtonDefaults.buttonElevation(
+                defaultElevation = 20.dp
+            )
+        ) {
+            Text(text = "Next")
+        }
+    }
 }
 
 @Preview(showBackground = true)
